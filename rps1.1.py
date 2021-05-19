@@ -35,15 +35,15 @@ class RandomPlayer(Player):
 class HumanPlayer(Player):
     def move(self):
         your_move = input('Choose your move: (rock / paper / scissors)\n')
-        if your_move == "rock":
+        if your_move == "r" or "rock":
             print("You chose rock.")
-        elif your_move == "paper":
+        elif your_move == "p" or "paper":
             print("You chose paper.")
-        elif your_move == "scissors":
+        elif your_move == "s" or "scissors":
             print("You chose scissors.")
         else:
             print("Try again!")
-            self.move()
+            self.their_move()
         return your_move
 
     def learn(self, my_move, their_move):
@@ -106,7 +106,7 @@ class Game:
             print("It's a Tie")
             print(f"score: player1: {self.score1} , player2: {self.score2} \n")
         self.p1.learn(move1, move2)
-        self.p2.learn(move1, move2)
+        self.p2.learn(move2, move1)
 
     def play_game(self):
         print("Game has started!")
