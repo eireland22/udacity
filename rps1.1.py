@@ -34,16 +34,9 @@ class RandomPlayer(Player):
 # Function asks the Player to choose a move
 class HumanPlayer(Player):
     def move(self):
-        your_move = input('Choose your move: (rock / paper / scissors)\n')
-        if your_move == "r" or "rock":
-            print("You chose rock.")
-        elif your_move == "p" or "paper":
-            print("You chose paper.")
-        elif your_move == "s" or "scissors":
-            print("You chose scissors.")
-        else:
-            print("Try again!")
-            self.their_move()
+        your_move = input('Choose your move: (rock / paper / scissors)\n').lower()
+        while your_move not in moves:
+            your_move = input('Try Again: (rock / paper / scissors)\n').lower()
         return your_move
 
     def learn(self, my_move, their_move):
